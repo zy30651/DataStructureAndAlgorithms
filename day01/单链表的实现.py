@@ -10,16 +10,16 @@ class SingleNode(object):
 class SingleLinkList(object):
     """单链表"""
     def __init__(self):
-        self._head = None
+        self.__head = None
 
     def is_empty(self):
         """判断链表是否为空"""
-        return self._head == None
+        return self.__head == None
 
     def length(self):
         """链接长度"""
         # cur初始时指向头节点
-        cur = self._head
+        cur = self.__head
         count = 0
         # 尾节点指向None，当未到达尾部时
         while cur != None:
@@ -30,28 +30,28 @@ class SingleLinkList(object):
 
     def travel(self):
         """遍历链表"""
-        cur = self._head
+        cur = self.__head
         while cur != None:
             print(cur.item)
             cur = cur.next
         print('')
 
     def add(self, item):
-        """头部加入数据"""
+        """头部加入数据；头插"""
         # 先创建一个保存item值的节点
         node = SingleNode(item)
         # 将新节点的链接域next指向头节点，
-        node.next = self._head
+        node.next = self.__head
         # 将链接的头_head指向新节点
-        self._head = node
+        self.__head = node
 
     def append(self, item):
-        """尾部加入数据"""
+        """尾部加入数据,尾插"""
         node = SingleNode(item)
         if self.is_empty():
-            self._head = node
+            self.__head = node
         else:
-            cur = self._head
+            cur = self.__head
             while cur.next != None:
                 cur = cur.next
             cur.next = node
@@ -69,7 +69,7 @@ class SingleLinkList(object):
             node = SingleNode(item)
             count = 0
             # pre用来指向指定位置的pos的前一个位置
-            pre = self._head
+            pre = self.__head
             while count < (pos-1):
                 count += 1
                 pre = pre.next
@@ -78,7 +78,7 @@ class SingleLinkList(object):
 
     def remove(self, item):
         """删除节点"""
-        cur = self._head
+        cur = self.__head
         pre = None
         while cur != None:
             # 找到指定元素
@@ -86,10 +86,11 @@ class SingleLinkList(object):
                 # 第一个节点就是删除的节点
                 if not pre:
                     # 将头指针指向头节点的后一个节点
-                    self._head = cur.next
+                    self.__head = cur.next
                 else:
                     # 将删除位置的前一个节点的next，指向删除位置的后一个节点
                     pre.next = cur.next
+                    break
             # 没找到，继续后移
             else:
                 pre = cur
@@ -97,10 +98,24 @@ class SingleLinkList(object):
 
     def search(self, item):
         """链表查找节点是否存在，并返回True或者False"""
-        cur = self._head
+        cur = self.__head
         while cur != None:
             if cur.item == item:
                 return True
             cur = cur.next
         return False
 
+
+if __name__ == "__main__":
+    ll = SingleLinkList()
+    ll.add(1)
+    ll.add(2)
+    ll.append(3)
+    ll.insert(2, 4)
+    print("length:", ll.length())
+    ll.travel()
+    print(ll.search(3))
+    print(ll.search(5))
+    ll.remove(1)
+    print("length:", ll.length())
+    ll.travel()
