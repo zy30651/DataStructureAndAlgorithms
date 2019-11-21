@@ -1,3 +1,5 @@
+# 单链表的一个变形是单向循环链表，链表中最后一个节点的next域不再为None，
+# 而是指向链表的头节点。
 class Node(object):
     """节点"""
     def __init__(self, item):
