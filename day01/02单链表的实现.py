@@ -14,7 +14,7 @@ class SingleLinkList(object):
 
     def is_empty(self):
         """判断链表是否为空"""
-        return self.__head == None
+        return self.__head is None
 
     def length(self):
         """链接长度"""
@@ -22,7 +22,7 @@ class SingleLinkList(object):
         cur = self.__head
         count = 0
         # 尾节点指向None，当未到达尾部时
-        while cur != None:
+        while cur is not None:
             count += 1
             # 将cur后移一个节点
             cur = cur.next
@@ -31,7 +31,7 @@ class SingleLinkList(object):
     def travel(self):
         """遍历链表"""
         cur = self.__head
-        while cur != None:
+        while cur is not None:
             print(cur.item)
             cur = cur.next
         print('')
@@ -52,7 +52,7 @@ class SingleLinkList(object):
             self.__head = node
         else:
             cur = self.__head
-            while cur.next != None:
+            while cur.next is not None:
                 cur = cur.next
             cur.next = node
 
@@ -80,7 +80,7 @@ class SingleLinkList(object):
         """删除节点"""
         cur = self.__head
         pre = None
-        while cur != None:
+        while cur is not None:
             # 找到指定元素
             if cur.item == item:
                 # 第一个节点就是删除的节点
@@ -99,7 +99,7 @@ class SingleLinkList(object):
     def search(self, item):
         """链表查找节点是否存在，并返回True或者False"""
         cur = self.__head
-        while cur != None:
+        while cur is not None:
             if cur.item == item:
                 return True
             cur = cur.next

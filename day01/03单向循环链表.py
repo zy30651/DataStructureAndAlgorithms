@@ -12,7 +12,7 @@ class SinCycLinkedList(object):
 
     def is_empty(self):
         """判断链表是否为空"""
-        return self.__head == None
+        return self.__head is None
 
     def length(self):
         """返回链表长度"""
