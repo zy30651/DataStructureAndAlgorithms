@@ -23,3 +23,13 @@ def time_deco(sort_func):
         end_time = time.time()
         print('耗时为：', (end_time-start_time))
     return wrapper
+
+
+def time_search(search_func):
+    """时间装饰器函数"""
+    def wrapper(num_list, item):
+        start_time = time.time()
+        search_func(num_list, item)
+        end_time = time.time()
+        print('耗时为：', (end_time-start_time))
+    return wrapper
