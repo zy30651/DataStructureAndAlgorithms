@@ -16,26 +16,28 @@ def merge_sort(alist):
         return alist
     # 二分分解
     num = len(alist)//2
-    left = merge_sort(alist[:num])
-    right = merge_sort(alist[num:])
-    # 合并
-    return merge(left, right)
+
+    while num > 0:
+        left = merge_sort(alist[:num])
+        right = merge_sort(alist[num:])
+        # 合并
+        return merge(left, right)
 
 
 def merge(left, right):
     """合并操作，将2个有序数组left[]、right[]合并到一个大的有序数组"""
     # left与right的下标指针
-    l, r = 0, 0
+    ll, rr = 0, 0
     result = []
-    while l < len(left) and r < len(right):
-        if left[l] < right[r]:
-            result.append(left[l])
-            l += 1
+    while ll < len(left) and rr < len(right):
+        if left[ll] < right[rr]:
+            result.append(left[ll])
+            ll += 1
         else:
-            result.append(right[r])
-            r += 1
-    result += left[l:]
-    result += right[r:]
+            result.append(right[rr])
+            rr += 1
+    result += left[ll:]
+    result += right[rr:]
     return result
 
 

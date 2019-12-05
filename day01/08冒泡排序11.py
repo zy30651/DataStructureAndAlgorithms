@@ -27,4 +27,4 @@ def bubble_sort(alist):
 if __name__ == '__main__':
     li = random_nums()
     bubble_sort(li)
-# print(li)
+# 11

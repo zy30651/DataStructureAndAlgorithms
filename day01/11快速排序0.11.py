@@ -14,8 +14,10 @@
 稳定性：不稳定
 """
 
-from day01.utils import time_deco, random_nums
-@time_deco
+from day01.utils import time_mut_deco, random_nums
+
+
+@time_mut_deco
 def quick_sort(alist, start, end):
     """快速排序"""
     # 递归退出条件
@@ -33,6 +35,8 @@ def quick_sort(alist, start, end):
 
     while low < high:
         # 如果low与high未重合，high指向的元素不比基准元素小，则high向左移动
+        # 1 2 3 4 5 6 7
+        # low：1    high:7 end:7
         while low < high and alist[high] >= mid:
             high -= 1
 
@@ -59,5 +63,5 @@ def quick_sort(alist, start, end):
 
 if __name__ == '__main__':
     li = random_nums()
-    quick_sort(li)
+    quick_sort(li, 0, len(li)-1)
 # 0.026秒

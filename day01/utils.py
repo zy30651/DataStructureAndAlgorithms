@@ -25,6 +25,16 @@ def time_deco(sort_func):
     return wrapper
 
 
+def time_mut_deco(sort_func):
+    """时间装饰器函数"""
+    def wrapper(num_list, start, end):
+        start_time = time.time()
+        sort_func(num_list, start, end)
+        end_time = time.time()
+        print('耗时为：', (end_time-start_time))
+    return wrapper
+
+
 def time_search(search_func):
     """时间装饰器函数"""
     def wrapper(num_list, item):

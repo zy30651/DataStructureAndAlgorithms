@@ -24,4 +24,4 @@ def selection_sort(alist):
 if __name__ == '__main__':
     li = random_nums()
     selection_sort(li)
-# 3.5秒
+# 4秒
