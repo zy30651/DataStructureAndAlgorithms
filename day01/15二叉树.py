@@ -13,7 +13,7 @@
 """
 
 
-# 二叉树的节点表示以及树的床架n
+# 二叉树的节点表示以及树的创建
 class Node(object):
     """节点类"""
     def __init__(self, elem=-1, lchild=None, rchild=None):
@@ -52,53 +52,63 @@ class Tree(object):
                     queue.append(cur.lchild)
                     queue.append(cur.rchild)
 
+    # 二叉树的遍历
+    # 深度遍历-先序遍历：先访问根节点，然后递归使用先序遍历访问左子树，再递归访问右子树
+    # 根节点-->左子树-->右子树
+    def preorder(self, root):
+        """递归实现先序遍历"""
+        if root is None:
+            return
+        print(root.elem)
+        self.preorder(root.lchild)
+        self.preorder(root.rchild)
 
-# 二叉树的遍历
-# 先序遍历：先访问根节点，然后递归使用先序遍历访问左子树，再递归访问右子树
-# 根节点-->左子树-->右子树
-def preorder(self, root):
-    """递归实现先序遍历"""
-    if root is None:
-        return
-    print(root.elem)
-    self.preorder(root.lchild)
-    self.preorder(root.rchild)
+    # 中序遍历：先递归使用先序遍历访问左子树，然后访问根节点，再递归访问右子树
+    # 左子树-->根节点-->右子树
+    def inorder(self, root):
+        """递归实现中序遍历"""
+        if root is None:
+            return
+        self.inorder(root.lchild)
+        print(root.elem)
+        self.inorder(root.rchild)
+
+    # 后序遍历 在后序遍历中，我们先递归使用后序遍历访问左子树和右子树，最后访问根节点
+    # 左子树->右子树->根节点
+    def postorder(self, root):
+        """递归实现后续遍历"""
+        if root is None:
+            return
+        self.postorder(root.lchild)
+        self.postorder(root.rchild)
+        print(root.elem)
+
+    # 广度优先遍历(层次遍历)
+    # 从树的root开始，从上到下从从左到右遍历整个树的节点
+    def breadth_travel(self):
+        """利用队列实现树的层次遍历"""
+        if self.root is None:
+            return
+        queue = list()
+        queue.append(self.root)
+        while queue:
+            node = queue.pop(0)
+            print(node.elem)
+            if node.lchild is not None:
+                queue.append(node.lchild)
+            if node.rchild is not None:
+                queue.append(node.rchild)
 
 
-# 中序遍历：先递归使用先序遍历访问左子树，然后访问根节点，再递归访问右子树
-# 左子树-->根节点-->右子树
-def inorder(self, root):
-    """递归实现中序遍历"""
-    if root is None:
-        return
-    self.inorder(root.lchild)
-    print(root.elem)
-    self.inorder(root.rchild)
+if __name__ == '__main__':
+    tree = Tree()
+    tree.add(1)
+    tree.add(2)
+    tree.add(3)
+    tree.add(4)
+    tree.add(5)
+    tree.add(6)
+    tree.add(7)
+    tree.inorder(tree.root)
+    tree.postorder(tree.root)
 
-
-# 后序遍历 在后序遍历中，我们先递归使用后序遍历访问左子树和右子树，最后访问根节点
-# 左子树->右子树->根节点
-def postorder(self, root):
-    """递归实现后续遍历"""
-    if root is None:
-        return
-    self.postorder(root.lchild)
-    self.postorder(root.rchild)
-    print(root.elem)
-
-
-# 广度优先遍历(层次遍历)
-# 从树的root开始，从上到下从从左到右遍历整个树的节点
-def breadth_travel(self, root):
-    """利用队列实现树的层次遍历"""
-    if root is None:
-        return
-    queue = list()
-    queue.append(root)
-    while queue:
-        node = queue.pop(0)
-        print(node.elem)
-        if node.lchild is not None:
-            queue.append(node.lchild)
-        if node.rchild is not None:
-            queue.append(node.rchild)
